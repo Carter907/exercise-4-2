@@ -28,7 +28,7 @@ class Program {
       Console.Write("salesperson: ");
       salesperson = Console.ReadLine().ToLower();
     }
-    Console.WriteLine("Grand Total: ${0}", grandTotal);
+    Console.WriteLine("Grand Total: {0:C0}", grandTotal);
     Console.WriteLine("Highest Sale: {0}", highest.ToUpper());
     Console.WriteLine("Passed");
   }
