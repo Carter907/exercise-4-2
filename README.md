@@ -2,24 +2,33 @@
 BEGIN
 	CLASS Program
 		Main METHOD
-			Console.WriteLine("salesperson: ");
-			var salesperson = Console.ReadLine();
-			var highestSale = 0;
-			var highest = "";
-			var grandTotal = 0;
-			while (salesperson != "Z") {
-				Console.WriteLine("sale: ");
-				var sale = Convert.ToInt32(Console.ReadLine());
-				grandTotal+=sale;
-				if (sale > highestSale) {
-					highest = salesperson;
-					highestSale = sale;
-				}
-				Console.WriteLine("salesperson: ");
-				salesperson = Console.ReadLine();
-			}
-			Console.WriteLine("Grand Total: ${0}", grandTotal);
-			Console.WriteLine("Highest Sale: {0}", highest);		
+
+			PRINT
+			 - "salesperson: "
+			VAR salesperson = TO LOWER CASE(PROMPT USER("salesperson: "))
+			VAR highestSale = 0
+			VAR highest = ""
+			VAR grandTotal = 0
+			WHILE salesperson != "Z" THEN
+				WHEN salesperson EQUALS
+					CASE "d" or "e" or "f":
+					  VAR sale = CONVERT TO INT (PROMPT USER("sale: "))
+					  grandTotal += sale
+					  IF sale > highestSale THEN
+					    highest = salesperson
+					    highestSale = sale
+					  BREAK
+					  DEFAULT:
+					    PRINT
+						- "intermediate output: Error, invalid salesperson selected, please try again"
+					    BREAK
+				      
+				      salesperson = LOWER CASE ("salesperson: ")
+				    
+		        PRINT FORMAT
+			   - "Grand Total: {CURRENCY FORMAT: grandTotal}"
+		        PRINT
+			   - "Highest Sale: {TO UPPER CASE (highest)}"		
 		END Main
 	END Program
 END
